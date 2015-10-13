@@ -8,4 +8,5 @@ urlpatterns = patterns('',
 
     url(r'^test/$', views.test, name='test'),
     url(r'^test2/$', views.test2, name='test2'),
+    url(r'^test3/$', views.test3, name='test3'),
 )

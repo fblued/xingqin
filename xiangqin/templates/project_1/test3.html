@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<title>forms  test</title>
+<style type="text/css">
+	.register{
+		color:#E15F63;
+		font-size:15px;
+	}
+</style>
+</head>
+<body>
+	<form id="register" method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Submit" />
+
+		<!-- error 
+		#{ % for field in form % }
+	            	{{ field.errors }}<br/>
+	            	{{ field.help_text}}
+	            	{{ field }}  -->
+	</form>
+</body>
+</html>

@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h1>data</h1>
+	<!-- 
 	{% if female %}
 	<ul>
 		{% for obj in female %}
@@ -26,5 +27,18 @@
 	{% else %}
 		<strong>man error </strong>
 	{% endif %}
+	-->
+
+
+	{% if userProfile %}
+	<ul>
+		{% for obj in userProfile %}
+		<li>{{  obj.name }}: Occupation {{ obj.Occupation }} Height {{ obj.height }}</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<strong>userProfile error </strong>
+	{% endif %}
+
 </body>
 </html>

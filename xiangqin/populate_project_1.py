@@ -5,7 +5,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'xiangqin.settings')
 import django
 django.setup()
 
-from project_1.models import Female,Man
+#from project_1.models import Female,Man
+from project_1.models import UserProfile
 
 
 def add_page(cat, title, url, views=0):
@@ -15,18 +16,7 @@ def add_page(cat, title, url, views=0):
 def add_cat(name, views=0, likes=0):
     c = Category.objects.get_or_create(name=name,views=views,likes=likes)[0]
     return c
-'''name,  sex, age, education, Occupation,
-	height, weight, BJHouseholds, car, house, hometown, 
-	require, flag, WxNo, message
 
-, sex = sex, age = age, education =education,
-		Occupation=Occupation, weight=weight, BJHouseholds = BJHouseholds, car=car,
-		house=house, hometown=hometown, flag=flag, WxNo=WxNo, message=message
-
-, sex="f", age=18, education="初中",Occupation="在读",
-   	height=140, weight = 25, BJHouseholds = False, car= False, house=False,
-   	hometown="x", require="x", flag=False, WxNo="11", message="x"
-	'''
 def add_Female(name,  sex, age, education, Occupation,
 	height, weight, BJHouseholds, car, house,  flag,
         hometown="",require="",  WxNo="", message="",img="") :
@@ -45,8 +35,122 @@ def add_Man(name,  sex, age, education, Occupation,
             img=img)[0]
         return m
 
+def add_UserProfile(OpenID, name,  sex, age, education, Occupation, 
+        height, weight, BJHouseholds, car, house,  flag,
+        hometown="",require="",  WxNo="", message="",img="") :
+        u = UserProfile.objects.get_or_create(OpenID= OpenID, name = name, sex = sex, age = age, education =education,
+            Occupation=Occupation, weight=weight, BJHouseholds = BJHouseholds, car=car,
+            house=house, hometown=hometown, flag=flag, WxNo=WxNo, message=message,
+            img=img)[0]
+        return u
+
 def populate():
 
+  add_UserProfile(name="f_1", sex="f", age=41, education="硕士", Occupation="公务员", height=164, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=1, img="001.jpg")
+  add_UserProfile(name="f_2", sex="f", age=36, education="初中", Occupation="在读", height=129, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=2, img="002.jpg")
+  add_UserProfile(name="f_3", sex="f", age=40, education="高中", Occupation="其他", height=175, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=3, img="003.jpg")
+  add_UserProfile(name="f_4", sex="f", age=41, education="大专", Occupation="其他", height=104, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=4, img="004.jpg")
+  add_UserProfile(name="m_5", sex="m", age=47, education="大专", Occupation="自由职业", height=210, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=5, img="005.jpg")
+  add_UserProfile(name="f_6", sex="f", age=40, education="大本", Occupation="私企白领", height=219, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=6, img="006.jpg")
+  add_UserProfile(name="f_7", sex="f", age=39, education="大本", Occupation="自由职业", height=193, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=7, img="007.jpg")
+  add_UserProfile(name="m_8", sex="m", age=47, education="硕士", Occupation="其他", height=119, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=8, img="008.jpg")
+  add_UserProfile(name="m_9", sex="m", age=40, education="初中", Occupation="自由职业", height=135, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=9, img="009.jpg")
+  add_UserProfile(name="m_10", sex="m", age=44, education="高中", Occupation="在读", height=213, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=10, img="010.jpg")
+  add_UserProfile(name="f_11", sex="f", age=40, education="博士", Occupation="私企白领", height=142, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=11, img="011.jpg")
+  add_UserProfile(name="f_12", sex="f", age=35, education="大专", Occupation="国企", height=212, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=12, img="012.jpg")
+  add_UserProfile(name="m_13", sex="m", age=38, education="硕士", Occupation="自由职业", height=159, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=13, img="013.jpg")
+  add_UserProfile(name="f_14", sex="f", age=38, education="大专", Occupation="其他", height=190, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=14, img="014.jpg")
+  add_UserProfile(name="f_15", sex="f", age=41, education="博士", Occupation="其他", height=100, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=15, img="015.jpg")
+  add_UserProfile(name="m_16", sex="m", age=48, education="初中", Occupation="在读", height=110, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=16, img="016.jpg")
+  add_UserProfile(name="m_17", sex="m", age=39, education="大本", Occupation="国企", height=139, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=17, img="017.jpg")
+  add_UserProfile(name="f_18", sex="f", age=39, education="大本", Occupation="在读", height=104, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=18, img="018.jpg")
+  add_UserProfile(name="f_19", sex="f", age=45, education="初中", Occupation="其他", height=181, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=19, img="019.jpg")
+  add_UserProfile(name="m_20", sex="m", age=42, education="大专", Occupation="自由职业", height=152, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=20, img="020.jpg")
+  add_UserProfile(name="f_21", sex="f", age=35, education="大本", Occupation="私企白领", height=127, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=21, img="021.jpg")
+  add_UserProfile(name="m_22", sex="m", age=38, education="大本", Occupation="其他", height=111, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=22, img="022.jpg")
+  add_UserProfile(name="m_23", sex="m", age=44, education="初中", Occupation="国企", height=129, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=23, img="023.jpg")
+  add_UserProfile(name="m_24", sex="m", age=43, education="高中", Occupation="国企", height=211, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=24, img="024.jpg")
+  add_UserProfile(name="m_25", sex="m", age=36, education="高中", Occupation="在读", height=205, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=25, img="025.jpg")
+  add_UserProfile(name="f_26", sex="f", age=42, education="硕士", Occupation="国企", height=190, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=26, img="026.jpg")
+  add_UserProfile(name="m_27", sex="m", age=47, education="大本", Occupation="私企白领", height=162, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=27, img="027.jpg")
+  add_UserProfile(name="f_28", sex="f", age=35, education="大本", Occupation="在读", height=177, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=28, img="028.jpg")
+  add_UserProfile(name="f_29", sex="f", age=38, education="高中", Occupation="国企", height=184, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=29, img="029.jpg")
+  add_UserProfile(name="f_30", sex="f", age=36, education="大本", Occupation="国企", height=169, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=30, img="030.jpg")
+  add_UserProfile(name="f_31", sex="f", age=39, education="硕士", Occupation="国企", height=198, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=31, img="031.jpg")
+  add_UserProfile(name="m_32", sex="m", age=37, education="大专", Occupation="国企", height=138, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=32, img="032.jpg")
+  add_UserProfile(name="f_33", sex="f", age=43, education="硕士", Occupation="自由职业", height=218, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=33, img="033.jpg")
+  add_UserProfile(name="f_34", sex="f", age=46, education="博士", Occupation="自由职业", height=171, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=34, img="034.jpg")
+  add_UserProfile(name="m_35", sex="m", age=37, education="博士", Occupation="在读", height=200, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=35, img="035.jpg")
+  add_UserProfile(name="m_36", sex="m", age=46, education="硕士", Occupation="私企白领", height=171, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=36, img="036.jpg")
+  add_UserProfile(name="m_37", sex="m", age=44, education="博士", Occupation="在读", height=183, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=37, img="037.jpg")
+  add_UserProfile(name="f_38", sex="f", age=41, education="博士", Occupation="自由职业", height=218, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=38, img="038.jpg")
+  add_UserProfile(name="m_39", sex="m", age=37, education="高中", Occupation="私企白领", height=144, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=39, img="039.jpg")
+  add_UserProfile(name="m_40", sex="m", age=42, education="博士", Occupation="国企", height=170, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=40, img="040.jpg")
+  add_UserProfile(name="m_41", sex="m", age=49, education="初中", Occupation="自由职业", height=143, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=41, img="041.jpg")
+  add_UserProfile(name="m_42", sex="m", age=49, education="初中", Occupation="在读", height=214, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=42, img="042.jpg")
+  add_UserProfile(name="m_43", sex="m", age=46, education="硕士", Occupation="私企白领", height=198, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=43, img="043.jpg")
+  add_UserProfile(name="m_44", sex="m", age=47, education="博士", Occupation="私企白领", height=187, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=44, img="044.jpg")
+  add_UserProfile(name="f_45", sex="f", age=49, education="大专", Occupation="公务员", height=184, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=45, img="045.jpg")
+  add_UserProfile(name="m_46", sex="m", age=47, education="高中", Occupation="自由职业", height=183, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=46, img="046.jpg")
+  add_UserProfile(name="f_47", sex="f", age=47, education="大专", Occupation="公务员", height=195, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=47, img="047.jpg")
+  add_UserProfile(name="f_48", sex="f", age=36, education="大专", Occupation="自由职业", height=134, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=48, img="048.jpg")
+  add_UserProfile(name="f_49", sex="f", age=37, education="大本", Occupation="自由职业", height=170, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=49, img="049.jpg")
+  add_UserProfile(name="f_50", sex="f", age=43, education="大本", Occupation="公务员", height=172, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=50, img="050.jpg")
+  add_UserProfile(name="m_51", sex="m", age=40, education="硕士", Occupation="自由职业", height=193, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=51, img="051.jpg")
+  add_UserProfile(name="m_52", sex="m", age=37, education="博士", Occupation="公务员", height=183, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=52, img="052.jpg")
+  add_UserProfile(name="m_53", sex="m", age=43, education="大专", Occupation="国企", height=193, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=53, img="053.jpg")
+  add_UserProfile(name="f_54", sex="f", age=35, education="初中", Occupation="其他", height=148, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=54, img="054.jpg")
+  add_UserProfile(name="m_55", sex="m", age=41, education="硕士", Occupation="自由职业", height=198, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=55, img="055.jpg")
+  add_UserProfile(name="f_56", sex="f", age=46, education="初中", Occupation="私企白领", height=109, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=56, img="056.jpg")
+  add_UserProfile(name="m_57", sex="m", age=43, education="硕士", Occupation="国企", height=118, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=57, img="057.jpg")
+  add_UserProfile(name="f_58", sex="f", age=45, education="硕士", Occupation="国企", height=168, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=58, img="058.jpg")
+  add_UserProfile(name="m_59", sex="m", age=41, education="初中", Occupation="私企白领", height=157, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=59, img="059.jpg")
+  add_UserProfile(name="m_60", sex="m", age=47, education="大本", Occupation="其他", height=219, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=60, img="060.jpg")
+  add_UserProfile(name="f_61", sex="f", age=42, education="硕士", Occupation="私企白领", height=206, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=61, img="061.jpg")
+  add_UserProfile(name="f_62", sex="f", age=48, education="博士", Occupation="在读", height=191, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=62, img="062.jpg")
+  add_UserProfile(name="f_63", sex="f", age=49, education="高中", Occupation="在读", height=180, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=63, img="063.jpg")
+  add_UserProfile(name="m_64", sex="m", age=47, education="硕士", Occupation="国企", height=114, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=64, img="064.jpg")
+  add_UserProfile(name="m_65", sex="m", age=43, education="博士", Occupation="私企白领", height=194, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=65, img="065.jpg")
+  add_UserProfile(name="f_66", sex="f", age=37, education="博士", Occupation="在读", height=161, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=66, img="066.jpg")
+  add_UserProfile(name="f_67", sex="f", age=43, education="硕士", Occupation="私企白领", height=127, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=67, img="067.jpg")
+  add_UserProfile(name="m_68", sex="m", age=44, education="大本", Occupation="在读", height=149, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=68, img="068.jpg")
+  add_UserProfile(name="f_69", sex="f", age=37, education="硕士", Occupation="其他", height=181, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=69, img="069.jpg")
+  add_UserProfile(name="f_70", sex="f", age=49, education="博士", Occupation="自由职业", height=212, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=70, img="070.jpg")
+  add_UserProfile(name="m_71", sex="m", age=44, education="大专", Occupation="自由职业", height=171, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=71, img="071.jpg")
+  add_UserProfile(name="f_72", sex="f", age=42, education="大专", Occupation="国企", height=196, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=72, img="072.jpg")
+  add_UserProfile(name="m_73", sex="m", age=41, education="高中", Occupation="私企白领", height=129, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=73, img="073.jpg")
+  add_UserProfile(name="m_74", sex="m", age=48, education="初中", Occupation="私企白领", height=163, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=74, img="074.jpg")
+  add_UserProfile(name="m_75", sex="m", age=35, education="硕士", Occupation="国企", height=204, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=75, img="075.jpg")
+  add_UserProfile(name="f_76", sex="f", age=38, education="大专", Occupation="在读", height=193, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=76, img="076.jpg")
+  add_UserProfile(name="m_77", sex="m", age=35, education="初中", Occupation="公务员", height=131, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=77, img="077.jpg")
+  add_UserProfile(name="m_78", sex="m", age=45, education="博士", Occupation="国企", height=138, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=78, img="078.jpg")
+  add_UserProfile(name="f_79", sex="f", age=45, education="硕士", Occupation="自由职业", height=168, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=79, img="079.jpg")
+  add_UserProfile(name="m_80", sex="m", age=36, education="硕士", Occupation="私企白领", height=150, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=80, img="080.jpg")
+  add_UserProfile(name="f_81", sex="f", age=46, education="大专", Occupation="在读", height=202, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=81, img="081.jpg")
+  add_UserProfile(name="f_82", sex="f", age=47, education="大专", Occupation="其他", height=187, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=82, img="082.jpg")
+  add_UserProfile(name="f_83", sex="f", age=44, education="大本", Occupation="在读", height=114, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=83, img="083.jpg")
+  add_UserProfile(name="m_84", sex="m", age=49, education="博士", Occupation="国企", height=181, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=84, img="084.jpg")
+  add_UserProfile(name="m_85", sex="m", age=38, education="博士", Occupation="国企", height=140, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=85, img="085.jpg")
+  add_UserProfile(name="m_86", sex="m", age=44, education="大本", Occupation="自由职业", height=108, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=86, img="086.jpg")
+  add_UserProfile(name="f_87", sex="f", age=43, education="高中", Occupation="自由职业", height=200, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=87, img="087.jpg")
+  add_UserProfile(name="m_88", sex="m", age=41, education="硕士", Occupation="其他", height=166, weight=160, BJHouseholds=False, car=False, house=False, flag=False, OpenID=88, img="088.jpg")
+  add_UserProfile(name="f_89", sex="f", age=37, education="大本", Occupation="其他", height=129, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=89, img="089.jpg")
+  add_UserProfile(name="m_90", sex="m", age=42, education="博士", Occupation="公务员", height=190, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=90, img="090.jpg")
+  add_UserProfile(name="m_91", sex="m", age=40, education="硕士", Occupation="国企", height=149, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=91, img="091.jpg")
+  add_UserProfile(name="f_92", sex="f", age=44, education="初中", Occupation="在读", height=205, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=92, img="092.jpg")
+  add_UserProfile(name="m_93", sex="m", age=47, education="硕士", Occupation="公务员", height=157, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=93, img="093.jpg")
+  add_UserProfile(name="m_94", sex="m", age=49, education="大专", Occupation="私企白领", height=192, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=94, img="094.jpg")
+  add_UserProfile(name="m_95", sex="m", age=41, education="初中", Occupation="自由职业", height=168, weight=180, BJHouseholds=False, car=False, house=False, flag=False, OpenID=95, img="095.jpg")
+  add_UserProfile(name="m_96", sex="m", age=38, education="初中", Occupation="私企白领", height=106, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=96, img="096.jpg")
+  add_UserProfile(name="f_97", sex="f", age=35, education="大专", Occupation="自由职业", height=194, weight=120, BJHouseholds=False, car=False, house=False, flag=False, OpenID=97, img="097.jpg")
+  add_UserProfile(name="m_98", sex="m", age=38, education="硕士", Occupation="公务员", height=162, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=98, img="098.jpg")
+  add_UserProfile(name="m_99", sex="m", age=38, education="高中", Occupation="在读", height=154, weight=100, BJHouseholds=False, car=False, house=False, flag=False, OpenID=99, img="099.jpg")
+  add_UserProfile(name="f_100", sex="f", age=49, education="大专", Occupation="其他", height=111, weight=140, BJHouseholds=False, car=False, house=False, flag=False, OpenID=100, img="100.jpg")
+
+
+
+
+"""
   add_Female(name="f_1", sex="f", age=35, education="大专", Occupation="在读", height=109, weight=180, BJHouseholds=False, car=False, house=False, flag=False, img="001.jpg")
   add_Female(name="f_2", sex="f", age=42, education="大专", Occupation="在读", height=133, weight=120, BJHouseholds=False, car=False, house=False, flag=False, img="002.jpg")
   add_Female(name="f_3", sex="f", age=43, education="大专", Occupation="私企白领", height=200, weight=140, BJHouseholds=False, car=False, house=False, flag=False, img="003.jpg")
@@ -249,7 +353,7 @@ def populate():
   add_Man(name="m_98", sex="m", age=42, education="博士", Occupation="私企白领", height=189, weight=120, BJHouseholds=False, car=False, house=False, flag=False, img="/man/098.jpg")
   add_Man(name="m_99", sex="m", age=35, education="博士", Occupation="私企白领", height=168, weight=100, BJHouseholds=False, car=False, house=False, flag=False, img="/man/099.jpg")
   add_Man(name="m_100", sex="m", age=38, education="初中", Occupation="私企白领", height=191, weight=160, BJHouseholds=False, car=False, house=False, flag=False, img="/man/100.jpg")
-
+"""
 
 '''
     python_cat = add_cat('Python', views=128, likes=64)
