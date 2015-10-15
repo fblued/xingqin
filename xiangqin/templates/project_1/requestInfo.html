@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>requestInfo  test</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+        })
+    </script>
+</head>
+<body>
+    <form class="form-signin span8" id="ReruestInfo" method="post" action="/project_1/reqinfo/">
+        {% csrf_token %}
+        {% if requestform %}
+        {% for field in requestform %}
+        {{ field.errors }}<br/>
+        {{ field.label }}
+        {{ field }}
+        <br />
+        {% endfor %}
+
+        {% else %}
+        <strong>requestfrom error </strong>
+        {% endif %}
+        <input type="submit" value="submit"/>
+    </form>
+</body>
+</html>
