@@ -20,7 +20,7 @@
 			$('#id_name').click(function(){
 				//alert("ok");
 				//$('.register').css("color" ,"#FF0033");
-				$("#id_name").prev().removeClass().addClass("BB")
+				//$("#id_name").prev().removeClass().addClass("BB")
 			})
 		})
 	</script>
@@ -45,7 +45,7 @@ body{
      <hr class="featurette-divider">
 
 	<script type="text/javascript" src="/static/js/test.js"></script> 
-	<form class="form-signin span8" id="Register" method="post" action="">
+	<form class="form-horizantal" id="Register" method="post" action="">
 
 		{% csrf_token %}
 		{% for hidden in userform.hidden_fields %}
@@ -54,7 +54,9 @@ body{
 		 
 		{% for field in userform.visible_fields %}
             		{{ field.errors }}<br/>
+            		<div class="col-xs-3">
             		{{ field.label }}
+            		</div>
             		{{ field }}	
             		<br />
         		{% endfor %}

@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^test2/$', views.test2, name='test2'),
     url(r'^test3/$', views.test3, name='test3'),
     url(r'^reqinfo/$', views.requestInfo, name='reqinfo'),
+    url(r'^resinfo/$', views.resInfo, name='resinfo'),
+    url(r'^detail/(?P<detail_slug>[\w\-]+)/$',views.detail,name='detail'),
 )

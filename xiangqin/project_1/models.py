@@ -7,7 +7,7 @@ class UserProfile(models.Model) :
 	name = models.CharField(max_length = 128)
 	sex = models.CharField(max_length = 2)
 	age = models.IntegerField(default=0)
-	education = models.CharField(max_length=128)
+	education = models.IntegerField (default=0)
 	Occupation = models.CharField(max_length=128)
 	height = models.IntegerField(default=0)
 	weight = models.IntegerField(default=0)

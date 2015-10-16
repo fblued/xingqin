@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>forms  test</title>
+    <style type="text/css">
+        .register{
+            color:#E15F63;
+            font-size:15px;
+        }
+        .BB{
+            color:#FF0033;
+            font-size:15px;
+            }
+    </style>
+    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#id_name').click(function(){
+                //alert("ok");
+                //$('.register').css("color" ,"#FF0033");
+                $("#id_name").prev().removeClass().addClass("BB")
+            })
+        })
+    </script>
+</head>
+<body>
+        <div>
+            <img src="/static/img/{{ she_he.img }}">
+            {{ she_he.name }} &nbsp&nbsp
+            {{ she_he.age }} &nbsp&nbsp
+            {{ she_he.education }}&nbsp&nbsp
+            {{ she_he.height }} &nbsp&nbsp
+            {{ she_he.hometown }}
+        </div>
+        <br />
+</body>
+</html>

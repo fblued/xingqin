@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>forms  test</title>
+    <style type="text/css">
+        .register{
+            color:#E15F63;
+            font-size:15px;
+        }
+        .BB{
+            color:#FF0033;
+            font-size:15px;
+            }
+    </style>
+    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#id_name').click(function(){
+                //alert("ok");
+                //$('.register').css("color" ,"#FF0033");
+                //$("#id_name").prev().removeClass().addClass("BB")
+            })
+        })
+    </script>
+</head>
+<body>
+    <form class="form-signin span8" id="ReruestInfo" method="post" action="">
+        {% csrf_token %}
+        {% for field in list_res %}
+        {{ field.errors }}<br/>
+        <!--{{ field.label }}-->
+        <a href="/project_1/detail/{{ field.OpenID }}"><div>
+        {{ field.name }} &nbsp&nbsp
+        {{ field.age }} &nbsp&nbsp
+        {{ field.education }}&nbsp&nbsp
+        {{ field.height }}
+        <img src="/static/img/{{ field.img }}" />
+        </div></a>
+        <!-- <br /> -->
+        {% endfor %}
+
+        <input type="submit" value="submit"/>
+    </form>
+</body>
+</html>

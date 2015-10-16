@@ -3,16 +3,11 @@ from django import forms
 from django.contrib.auth.models import User
 from project_1.models import UserProfile
 
-SOURCES_CHOICES=(
-	('m','boy'),
-	('f','girl'),
-	)
-
-AGES = {'a':17,
+AGES = {'a':(0,17),
 	'b':(18,22),
 	'c':(23,26),
 	'd':(27,35),
-	'e':35, 
+	'e':(35,200), 
 	}
 
 	# when you find in data
@@ -27,10 +22,12 @@ SOURCES_AGES=(
         )
 
 SOURCES_EDU=(
-        ('1','专科'),
-        ('2','本科'),
-        ('3','硕士'),
-        ('4','博士'),
+	(1,'初中'),
+	(2,'高中'),
+        	(3,'大专'),
+        	(4,'大本'),
+        	(5,'硕士'),
+        	(6,'博士'),
         )
 
 SOURCES_AIM=(
@@ -38,11 +35,18 @@ SOURCES_AIM=(
         ('marry','结婚'),
         )
 
+SOURCES_CHOICES=(
+	('m','boy'),
+	('f','girl'),
+	)
+
+
 class Register(forms.ModelForm) :
 	required_css_class = 'register'
 	name = forms.CharField(label="姓名",max_length=50)
 	sex = forms.ChoiceField(label=("性别"), widget=forms.Select(), choices=SOURCES_CHOICES,initial=SOURCES_CHOICES[1])
 	age = forms.IntegerField(label="年龄", initial=0)
+	education = forms.ChoiceField(label="学历",widget=forms.Select(),choices=SOURCES_EDU,initial=SOURCES_EDU[1])
 
 	Occupation = forms.CharField(label="职业")
 	height =forms.IntegerField(label="身高")
@@ -67,7 +71,8 @@ class Register(forms.ModelForm) :
 
 	class Meta:
 		model=UserProfile
-		field=('name','sex','age','education','Occupation','height','weight','BJHouseholds','car','house','hometown')
+		#field=('name','sex','age','education','Occupation','height','weight','BJHouseholds','car','house','hometown')
+		fields = '__all__'
 
 
 class RequestForm(forms.Form):
@@ -75,9 +80,9 @@ class RequestForm(forms.Form):
     ages = forms.ChoiceField(label='年龄段',choices=SOURCES_AGES,initial=SOURCES_AGES[1])
     height = forms.IntegerField(label="身高")
     weight = forms.IntegerField(label="体重")
-    hometown = forms.CharField(label="家乡",max_length=1024)
+    hometown = forms.CharField(label="家乡",max_length=1024, required=False, initial='')
     education = forms.ChoiceField(label="学历",widget=forms.Select(),choices=SOURCES_EDU,initial=SOURCES_EDU[1])
-    Occupation = forms.CharField(label="职业")
+    Occupation = forms.CharField(label="职业", required=False,initial='')
     aim = forms.ChoiceField(label="动机",widget=forms.Select(),choices=SOURCES_AIM,initial=SOURCES_AIM[1])
    
 
