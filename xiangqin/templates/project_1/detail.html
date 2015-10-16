@@ -24,14 +24,17 @@
     </script>
 </head>
 <body>
+    <form class="form-signin span8" id="detail" method="post" action="">
+        {% csrf_token %}
         <div>
-            <img src="/static/img/{{ she_he.img }}">
+            <img src="/static/img/{{ she_he.img }}" />
             {{ she_he.name }} &nbsp&nbsp
             {{ she_he.age }} &nbsp&nbsp
             {{ she_he.education }}&nbsp&nbsp
             {{ she_he.height }} &nbsp&nbsp
             {{ she_he.hometown }}
         </div>
-        <br />
+        <input type="submit" value="点击匹配" />
+    </form>
 </body>
 </html>
