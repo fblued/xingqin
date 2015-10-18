@@ -40,6 +40,15 @@ SOURCES_CHOICES=(
 	('f','girl'),
 	)
 
+#在读, 私企白领, 自由职业, 公务员, 国企, 其他
+SOURCES_OCC=(
+	('在读','在读'),
+	('私企白领','私企白领'),
+	('自由职业','自由职业'),
+	('公务员','公务员'),
+	('国企','国企'),
+	('其他','其他'),
+	)
 
 class Register(forms.ModelForm) :
 	required_css_class = 'register'
@@ -48,7 +57,7 @@ class Register(forms.ModelForm) :
 	age = forms.IntegerField(label="年龄", initial=0)
 	education = forms.ChoiceField(label="学历",widget=forms.Select(),choices=SOURCES_EDU,initial=SOURCES_EDU[1])
 
-	Occupation = forms.CharField(label="职业")
+	Occupation = forms.ChoiceField(label="职业",widget=forms.Select(),choices=SOURCES_OCC,initial=SOURCES_OCC[1])
 	height =forms.IntegerField(label="身高")
 	weight = forms.IntegerField(label="体重")
 	BJHouseholds = forms.BooleanField(label="JH",required=False)
@@ -82,7 +91,7 @@ class RequestForm(forms.Form):
     weight = forms.IntegerField(label="体重")
     hometown = forms.CharField(label="家乡",max_length=1024, required=False, initial='')
     education = forms.ChoiceField(label="学历",widget=forms.Select(),choices=SOURCES_EDU,initial=SOURCES_EDU[1])
-    Occupation = forms.CharField(label="职业", required=False,initial='')
+    Occupation = forms.ChoiceField(label="职业",widget=forms.Select(),choices=SOURCES_OCC,initial=SOURCES_OCC[1])
     aim = forms.ChoiceField(label="动机",widget=forms.Select(),choices=SOURCES_AIM,initial=SOURCES_AIM[1])
    
 

@@ -7,6 +7,14 @@ from project_1.forms import Register,RequestForm
 from project_1.models import UserProfile
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
+from django.core import serializers
+from urllib import urlencode,unquote,quote
+
+import json
+
+#from django.utils import simplejson
+    # sudo apt-get install python-simplejson
+    # import error
 
 #from project_1.models import Female
 #from project_1.models import Man
@@ -189,8 +197,16 @@ def getResObjects(objs, src) :
             continue
         if req_list[6] and  req_list[6] != src.Occupation:
             continue
-        ret.append(obj)
-        ret[len(ret)-1].education =  EDUS[ret[len(ret)-1].education]
+        ret.append({'OpenID':obj.OpenID,
+            'name':obj.name,
+            'age':obj.age,
+            'education': EDUS[obj.education],
+            'hometown' : obj.hometown,
+            'height':obj.height,
+            'img':str(obj.img)});
+
+        #ret.append(obj)
+        #ret[len(ret)-1].education =  EDUS[ret[len(ret)-1].education]
     return ret 
 
 
@@ -210,8 +226,14 @@ def resInfo(request):
     m_objects = getAllObjects(preUser.require)
     #print [x.name for x in m_objects]
     list_res = getResObjects(m_objects, preUser)
-    return render(request,'project_1/resInfo.html',{'list_res':list_res})
+    #print list_res 
+    #request.session['Objs'] = serializers.serialize('json', list_res)
+    request.session['Objs'] = json.dumps(list_res)
+    print request.session.get('Objs',False)
 
+    request.session['Objs_n'] = 10;
+    return render(request,'project_1/resInfo.html',{'list_res':list_res[:10]})
+    
 
 """
 '''
@@ -259,3 +281,20 @@ def detail(request,detail_slug):
     except UserProfile.DoseNotExist:
         pass
     return render(request,'project_1/detail.html',context_dict)
+
+
+
+def more(request) :
+    list_res = json.loads(request.session.get('Objs', False))
+    n = int(request.session.get('Objs_n',False))
+    #print list_res
+    #print type(list_res)
+    #print [x for x in list_res]
+    ret = []
+    
+    if len(list_res) > n :
+        ret = list_res[n:n+10]
+        request.session['Objs_n'] = n+10 
+    
+    return HttpResponse(json.dumps(ret), content_type="application/json")
+    #return HttpResponse(json.dumps( {'id': 1, 'name': "虫子"}).decode(),content_type="application/json")

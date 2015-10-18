@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^reqinfo/$', views.requestInfo, name='reqinfo'),
     url(r'^resinfo/$', views.resInfo, name='resinfo'),
     url(r'^detail/(?P<detail_slug>[\w\-]+)/$',views.detail,name='detail'),
+    url(r'^more/$', views.more, name='more'),
 )
